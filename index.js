@@ -62,9 +62,11 @@ bot.on("message", msg => {
         let wRating = getRating(winner);
         let wProb = calculateProbability(wRating, wOtherAvg);
         let wElo = Math.round(adjustRating(1, winner, wProb));
+        let wWinLoss = getWinLoss(1, winner);
+
         if (wElo > 1000) wElo = 1000;
-        let wField = winner + "'s new elo: **" + wElo + "** (+*" + (wElo - wRating) + "*) WINNER!";
-        updateEmbed.addFields({ name: wField, value: "W-L", inline: false });
+        let wField = winner + "'s elo: **" + wElo + "** (+*" + (wElo - wRating) + "*) WINNER!";
+        updateEmbed.addFields({ name: wField, value: "W-L: " + wWinLoss, inline: false });
         toPrint(winner + " " + wElo + ",");
 
         let lRating = [];
@@ -76,15 +78,17 @@ bot.on("message", msg => {
                 else { lOtherAvg += getRating(players[i]); }
             }
             lOtherAvg /= (players.length - 1);
-            console.log("Average game rating for " + players[index] + ": " + wOtherAvg);
+            //console.log("Average game rating for " + players[index] + ": " + wOtherAvg);
 
             let lPlayer = players[index];
             let lRating = getRating(lPlayer);
             let lProb = calculateProbability(lRating, lOtherAvg);
             let lElo = Math.round(adjustRating(0, lPlayer, lProb));
+            let lWinLoss = getWinLoss(0, lPlayer);
+
             if (lElo < 0) lElo = 0;
-            let lField = lPlayer + "'s new elo: **" + lElo + "** (*" + (lElo - lRating) + "*)";
-            updateEmbed.addFields({ name: lField, value: "W-L", inline: true });
+            let lField = lPlayer + "'s elo: **" + lElo + "** (*" + (lElo - lRating) + "*)";
+            updateEmbed.addFields({ name: lField, value: "W-L: " + lWinLoss, inline: true });
             toPrint(lPlayer + " " + lElo + ",");
         }
 
@@ -92,6 +96,41 @@ bot.on("message", msg => {
         //updateEmbed.fields = null;
     }
 });
+
+function getWinLoss(num, player) {
+    const wlFile = "WL.txt";
+    let data = fs.readFileSync(wlFile, 'utf-8');
+    let index = data.indexOf(player);
+
+    let WL = data.substring(index + player.length + 1, data.indexOf(",", index + player.length + 1))
+
+    console.log("WL for " + player + ": " + WL);
+
+    if (num == 1) {
+        // add 1 to wins
+        let W = Number(WL.split("-")[0]) + 1;
+        WL = W + "-" + WL.split("-")[1];
+    } else if (num == 0) {
+        // add 1 to loss
+        let L = Number(WL.split("-")[1]) + 1;
+        WL = WL.split("-")[0] + "-" + L;
+    } else {
+        throw new error("invalid win/loss");
+    }
+
+    let firstPart = data.substring(0, index + player.length + 1);
+    let replacePart = WL;
+    let lastPart = data.substring(data.indexOf(",", index + player.length + 1));
+
+    console.log("First part is " + firstPart);
+    console.log("Last part is " + lastPart);
+
+    data = firstPart + replacePart + lastPart;
+
+    fs.writeFileSync(wlFile, data, "utf-8");
+
+    return WL;
+}
 
 function toPrint(rank) {
     let data = fs.readFileSync(filename, 'utf-8');
