@@ -11,6 +11,23 @@ const { error } = require("console");
 
 const filename = "players.txt";
 
+const updateEmbed = new Discord.MessageEmbed() //https://discordjs.guide/popular-topics/embeds.html
+    .setColor('#E74C3C')
+    .setTitle('An UNO Game has been completed')
+    .setURL('https://devpost.com/software/carbonbot')
+    .setAuthor('UNO Rankings',
+        'https://www.pinclipart.com/picdir/big/95-951998_worlds-smallest-uno-u-s-uno-play-card-game.png')
+    .setDescription("Here are this game's results: ")
+    .setThumbnail('https://www.pinclipart.com/picdir/big/95-951998_worlds-smallest-uno-u-s-uno-play-card-game.png')
+    .addFields(
+        { name: "arabel's new elo: **838** (+8) ", value: "you don't suck!", inline: false },
+        { name: "beks's new elo: **390** (-5)", value: "you suck!", inline: true },
+        { name: "eli's new elo: **365** (-5)", value: "you suck!", inline: true },
+        { name: "bot's new elo: **362** (-5)", value: "you suck!", inline: true },
+    )
+    .setTimestamp()
+    .setFooter('ggez');
+
 bot.login(token);
 
 bot.on('ready', () => {
@@ -39,7 +56,7 @@ bot.on("message", msg => {
             return;
         }
 
-        msg.channel.send("An UNO Game has completed.");
+        // msg.channel.send("An UNO Game has completed.");
 
         let winner = players[0];
         let wOtherAvg = 0;
@@ -75,7 +92,7 @@ bot.on("message", msg => {
             toPrint(lPlayer + " " + lElo + ",");
         }
 
-        msg.channel.send("Updated Ratings");
+        msg.channel.send(updateEmbed);
     }
 });
 
