@@ -86,9 +86,14 @@ function toPrint(rank) {
     console.log("Index of " + rank.split(" ")[0] + " is " + index);
     console.log("Index of " + rank.split(" ")[1] + " is " + (index + rank.split(" ")[0].length + 1));
 
-    for (let i = 1; i <= rank.split(" ")[1].length; i++) {
-        data.charAt(index + rank.split(" ")[0].length + i).replace(rank.split(" ")[1].charAt(i));
-    }
+    let firstPart = data.substring(0, index + rank.split(" ")[0].length + 1);
+    let replacePart = rank.split(" ")[1];
+    let lastPart = data.substring(index + rank.length);
+
+    console.log("First part is " + firstPart);
+    console.log("Last part is " + lastPart);
+
+    data = firstPart + replacePart + lastPart;
 
     fs.writeFileSync(filename, data, "utf-8");
 }
