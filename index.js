@@ -19,12 +19,6 @@ const updateEmbed = new Discord.MessageEmbed() //https://discordjs.guide/popular
         'https://www.pinclipart.com/picdir/big/95-951998_worlds-smallest-uno-u-s-uno-play-card-game.png')
     .setDescription("Here are this game's results: ")
     .setThumbnail('https://www.pinclipart.com/picdir/big/95-951998_worlds-smallest-uno-u-s-uno-play-card-game.png')
-    .addFields(
-        { name: "arabel's new elo: **838** (+8) ", value: "you don't suck!", inline: false },
-        { name: "beks's new elo: **390** (-5)", value: "you suck!", inline: true },
-        { name: "eli's new elo: **365** (-5)", value: "you suck!", inline: true },
-        { name: "bot's new elo: **362** (-5)", value: "you suck!", inline: true },
-    )
     .setTimestamp()
     .setFooter('ggez');
 
@@ -69,7 +63,8 @@ bot.on("message", msg => {
         let wProb = calculateProbability(wRating, wOtherAvg);
         let wElo = Math.round(adjustRating(1, winner, wProb));
         if (wElo > 1000) wElo = 1000;
-        msg.channel.send(winner + "'s new elo: **" + wElo + "** (*" + (wElo - wRating) + "*) WINNER!");
+        let wField = winner + "'s new elo: **" + wElo + "** (+*" + (wElo - wRating) + "*) WINNER!";
+        updateEmbed.addFields({ name: wField, value: "W-L", inline: false });
         toPrint(winner + " " + wElo + ",");
 
         let lRating = [];
@@ -88,11 +83,13 @@ bot.on("message", msg => {
             let lProb = calculateProbability(lRating, lOtherAvg);
             let lElo = Math.round(adjustRating(0, lPlayer, lProb));
             if (lElo < 0) lElo = 0;
-            msg.channel.send(lPlayer + "'s new elo: **" + lElo + "** (*" + (lElo - lRating) + "*)");
+            let lField = lPlayer + "'s new elo: **" + lElo + "** (*" + (lElo - lRating) + "*)";
+            updateEmbed.addFields({ name: lField, value: "W-L", inline: true });
             toPrint(lPlayer + " " + lElo + ",");
         }
 
         msg.channel.send(updateEmbed);
+        //updateEmbed.fields = null;
     }
 });
 
