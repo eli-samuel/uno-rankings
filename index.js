@@ -14,7 +14,7 @@ const filename = "players.txt";
 const updateEmbed = new Discord.MessageEmbed() //https://discordjs.guide/popular-topics/embeds.html
     .setColor('#E74C3C')
     .setTitle('An UNO Game has been completed')
-    .setURL('https://devpost.com/software/carbonbot')
+    .setURL('https://www.discord.gg/7mbc8um')
     .setAuthor('UNO Rankings',
         'https://www.pinclipart.com/picdir/big/95-951998_worlds-smallest-uno-u-s-uno-play-card-game.png')
     .setDescription("Here are this game's results: ")
@@ -66,7 +66,7 @@ bot.on("message", msg => {
 
         if (wElo > 1000) wElo = 1000;
         let wField = winner + "'s elo: **" + wElo + "** (+*" + (wElo - wRating) + "*) WINNER!";
-        updateEmbed.addFields({ name: wField, value: "W-L: " + wWinLoss, inline: false });
+        updateEmbed.addFields({ name: wField, value: "W-L: *" + wWinLoss + "*", inline: false });
         toPrint(winner + " " + wElo + ",");
 
         let lRating = [];
@@ -88,12 +88,12 @@ bot.on("message", msg => {
 
             if (lElo < 0) lElo = 0;
             let lField = lPlayer + "'s elo: **" + lElo + "** (*" + (lElo - lRating) + "*)";
-            updateEmbed.addFields({ name: lField, value: "W-L: " + lWinLoss, inline: true });
+            updateEmbed.addFields({ name: lField, value: "W-L: *" + lWinLoss + "*", inline: false });
             toPrint(lPlayer + " " + lElo + ",");
         }
 
         msg.channel.send(updateEmbed);
-        //updateEmbed.fields = null;
+        updateEmbed.fields = [];
     }
 });
 
@@ -180,7 +180,7 @@ function adjustRating(num, player, prob) {
         elo = rating + K * (1 - prob) + 5;
     } else if (num == 0) { // lower elo
         console.log("K value for " + player + " :" + K * (0 - prob))
-        elo = rating + (K / 3) * (0 - prob); // /3 since you lose 3/4 games on average
+        elo = rating + (K / 2.4) * (0 - prob); // /2.4 since you lose 3/4 games on average - did the damn testing
     } else {
         throw new error("invalid win/loss");
     }
@@ -193,3 +193,13 @@ function adjustRating(num, player, prob) {
 function calculateProbability(r1, r2) {
     return (1.0 / (1.0 + Math.pow(10, ((r2 - r1) / 400))));
 }
+
+// UNO eli beks arabel bot
+// UNO beks eli arabel bot
+// UNO arabel eli beks bot
+// UNO bot arabel eli beks
+
+// eli 0-0,arabel 0-0,beks 0-0,bot 0-0,
+// arabel 500,beks 500,eli 500,bot 500,
+
+//arabel - beks - arabel - arabel - bot - arabel - eli - arabel
