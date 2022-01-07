@@ -28,7 +28,12 @@ bot.on('ready', () => {
     console.log("Logged in as " + bot.user.tag);
 });
 
-// test function
+/* 
+TODO:
+    - add new player
+    - top 10 ranking embed
+    - player personal elo embed card
+*/
 bot.on("message", msg => {
     if (msg.author == bot.user) return; // Prevent bot from responding to its own messages
 
@@ -203,3 +208,6 @@ function calculateProbability(r1, r2) {
 // arabel 500,beks 500,eli 500,bot 500,
 
 //arabel - beks - arabel - arabel - bot - arabel - eli - arabel
+
+//arabel 593,beks 461,eli 470,bot 466,sacha 500,
+//eli 1-7,arabel 5-3,beks 1-7,bot 1-7,sacha 0-0,
