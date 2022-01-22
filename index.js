@@ -28,11 +28,11 @@ bot.on('ready', () => {
     console.log("Logged in as " + bot.user.tag);
 });
 
-/* 
-TODO:
+/* TODO:
     - add new player
     - top 10 ranking embed
     - player personal elo embed card
+    - check to see if all players exist
 */
 bot.on("message", msg => {
     if (msg.author == bot.user) return; // Prevent bot from responding to its own messages
