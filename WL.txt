@@ -1,1 +1,1 @@
-eli 8-15,arabel 5-18,beks 7-16,bot 1-7,sacha 1-12,malik 2-2,bucket 0-4
+eli 10-17,arabel 5-18,beks 9-18,bot 1-7,sacha 1-12,malik 2-6,bucket 0-8,
