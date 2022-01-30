@@ -44,7 +44,43 @@ const profileCard = new Discord.MessageEmbed()
     .setURL('https://www.discord.gg/7mbc8um')
     .setAuthor('UNO Rankings',
         'https://www.pinclipart.com/picdir/big/95-951998_worlds-smallest-uno-u-s-uno-play-card-game.png')
-    .setDescription("")
+    .setThumbnail('https://www.pinclipart.com/picdir/big/95-951998_worlds-smallest-uno-u-s-uno-play-card-game.png')
+    .setTimestamp()
+    .setFooter(VERSION);
+
+const helpEmbed = new Discord.MessageEmbed()
+    .setColor('#E74C3C')
+    .setTitle('UNO Commands')
+    .setURL('https://www.discord.gg/7mbc8um')
+    .setAuthor('UNO Rankings',
+        'https://www.pinclipart.com/picdir/big/95-951998_worlds-smallest-uno-u-s-uno-play-card-game.png')
+    .setDescription("All commands start with 'UNO'.")
+
+    .addFields({
+        name: '~~**add**~~',
+        value: "~~add a new player to track\n*usage: UNO add 'USER'*~~ TO BE IMPLEMENTED",
+        inline: false
+    }, {
+        name: '**game**',
+        value: "update ranks after a completed game\n*usage: UNO game 'win USER' 'lose USER1' 'lose USER2' 'lose USER3'*",
+        inline: false
+    }, {
+        name: '**help**',
+        value: 'show help commands',
+        inline: false
+    }, {
+        name: '~~**information**~~',
+        value: "~~about me~~ TO BE IMPLEMENTED",
+        inline: false
+    }, {
+        name: '**profile**',
+        value: "show a player profile\n*usage: UNO profile 'USER'*",
+        inline: false
+    }, {
+        name: '**rankings**',
+        value: "show all player rankings",
+        inline: false
+    }, )
     .setThumbnail('https://www.pinclipart.com/picdir/big/95-951998_worlds-smallest-uno-u-s-uno-play-card-game.png')
     .setTimestamp()
     .setFooter(VERSION);
@@ -61,6 +97,7 @@ bot.on('ready', () => {
     - player personal elo embed card
     - check to see if all players exist
     - rulebook
+    - help embed
 */
 
 bot.on("message", msg => {
@@ -92,7 +129,7 @@ bot.on("message", msg => {
             let rank = -1;
             for (let i = 0; i < allPlayers.length; i++) {
                 if (allPlayers[i][0] == player) {
-                    rank = i+1;
+                    rank = i + 1;
                     break;
                 }
             }
@@ -139,8 +176,6 @@ bot.on("message", msg => {
             });
             toPrint(winner + " " + wElo + ",");
 
-            let lRating = [];
-
             for (let index = 1; index < players.length; index++) {
                 let lOtherAvg = 0;
                 for (let i = 0; i < players.length; i++) {
@@ -171,6 +206,8 @@ bot.on("message", msg => {
 
             msg.channel.send(updateEmbed);
             updateEmbed.fields = [];
+        } else if (msg.content.includes("help")) { // Help embed (UNO help)
+            msg.channel.send(helpEmbed);
         } else {
             msg.channel.send("Unkown command.")
         }
