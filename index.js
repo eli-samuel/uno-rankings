@@ -185,7 +185,7 @@ function adjustRating(num, player, prob) {
         elo = rating + K * (1 - prob) + 5;
     } else if (num == 0) { // lower elo
         console.log("K value for " + player + " :" + K * (0 - prob))
-        elo = rating + (K / 2.4) * (0 - prob); // /2.4 since you lose 3/4 games on average - did the damn testing
+        elo = rating + (K / 3) * (0 - prob); // changed to 3 (higher=lose less, lower = lose more)
     } else {
         throw new error("invalid win/loss");
     }
