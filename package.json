@@ -1,21 +1,21 @@
 {
-  "name": "discord-carbon-bot",
-  "version": "1.0.0",
-  "description": "Useful bot for helping discord communities calculate and reduce their carbon foot print",
+  "name": "uno-rankings",
+  "version": "1.1",
+  "description": "A bot for UNO rankings",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Cache-Overflow/discord-carbon-bot.git"
+    "url": "https://github.com/eli-samuel/uno-rankings"
   },
-  "author": "Eli Samuel, Andrew Zhang, David Lemme, David Roper\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D,\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C and \u001b[C\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D David Lemme, and David Roper",
-  "license": "ISC",
+  "author": "Eli Samuel",
+  "license": "",
   "bugs": {
-    "url": "https://github.com/Cache-Overflow/discord-carbon-bot/issues"
+    "url": "https://github.com/eli-samuel/uno-rankings/issues"
   },
-  "homepage": "https://github.com/Cache-Overflow/discord-carbon-bot#readme",
+  "homepage": "https://github.com/eli-samuel/uno-rankings",
   "dependencies": {
     "discord.js": "^12.2.0",
     "node-fetch": "^2.6.0"
