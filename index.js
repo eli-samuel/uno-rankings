@@ -1,16 +1,11 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client();
-const token = "OTI4NTQ0NTUwOTg3ODkwNzI4.YdaUgA.ypjCq6rcriwAuNKohAY0ihfGDXs";
-const prefix = "UNO"
-const fetch = require("node-fetch");
-
+const config = require('./config.json');
 const fs = require('fs');
-const path = require('path');
 const {
     error
 } = require("console");
-
-const VERSION = 'Version 1.1';
+const VERSION = 'Version 1.2';
 const filename = "players.txt";
 
 // When a game completes
@@ -55,7 +50,6 @@ const helpEmbed = new Discord.MessageEmbed()
     .setAuthor('UNO Rankings',
         'https://www.pinclipart.com/picdir/big/95-951998_worlds-smallest-uno-u-s-uno-play-card-game.png')
     .setDescription("All commands start with 'UNO'.")
-
     .addFields({
         name: '~~**add**~~',
         value: "~~add a new player to track\n*usage: UNO add 'USER'*~~ TO BE IMPLEMENTED",
@@ -69,7 +63,7 @@ const helpEmbed = new Discord.MessageEmbed()
         value: 'show help commands',
         inline: false
     }, {
-        name: '~~**information**~~',
+        name: '~~**info**~~',
         value: "~~about me~~ TO BE IMPLEMENTED",
         inline: false
     }, {
@@ -85,19 +79,15 @@ const helpEmbed = new Discord.MessageEmbed()
     .setTimestamp()
     .setFooter(VERSION);
 
-bot.login(token);
+bot.login(config.token);
 
 bot.on('ready', () => {
     console.log("Logged in as " + bot.user.tag);
 });
 
 /* TODO:
-    - add new player
-    - top 10 ranking embed
-    - player personal elo embed card
     - check to see if all players exist
     - rulebook
-    - help embed
 */
 
 bot.on("message", msg => {
@@ -106,7 +96,7 @@ bot.on("message", msg => {
     // test cases
     if (msg.content === "ayy") msg.channel.send("lmao");
 
-    if (msg.content.startsWith(prefix)) {
+    if (msg.content.startsWith(config.prefix)) {
         console.log("=======================");
         if (msg.content.includes("rankings")) { // Rankings (UNO rankings)
             let players = getPlayers();
@@ -120,7 +110,7 @@ bot.on("message", msg => {
             msg.channel.send(topRankings);
             topRankings.fields = [];
         } else if (msg.content.includes("add")) { // Add player (UNO add 'username)
-
+            msg.channel.send("Command not yet impemented.");
         } else if (msg.content.includes("profile")) { // Player profile (UNO profile 'username')
             let player = msg.content.split(" ")[2];
             let rating = getRating(player);
@@ -208,13 +198,12 @@ bot.on("message", msg => {
             updateEmbed.fields = [];
         } else if (msg.content.includes("help")) { // Help embed (UNO help)
             msg.channel.send(helpEmbed);
-        } else {
+        } else if (msg.content.includes("info")) { // Information about the bot
+            msg.channel.send("Command not yet impemented.");
+        } else { // Any other command
             msg.channel.send("Unkown command.")
         }
     }
-
-
-
 });
 
 function getPlayers() {
