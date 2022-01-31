@@ -5,7 +5,6 @@ const fs = require('fs');
 const {
     error
 } = require("console");
-const VERSION = 'Version 1.2';
 const filename = "players.txt";
 
 // When a game completes
@@ -18,7 +17,7 @@ const updateEmbed = new Discord.MessageEmbed() //https://discordjs.guide/popular
     .setDescription("Here are this game's results: ")
     .setThumbnail('https://www.pinclipart.com/picdir/big/95-951998_worlds-smallest-uno-u-s-uno-play-card-game.png')
     .setTimestamp()
-    .setFooter(VERSION);
+    .setFooter(config.version);
 
 // To view the top players
 const topRankings = new Discord.MessageEmbed()
@@ -30,7 +29,7 @@ const topRankings = new Discord.MessageEmbed()
     .setDescription("Ranked highest to lowest.")
     .setThumbnail('https://www.pinclipart.com/picdir/big/95-951998_worlds-smallest-uno-u-s-uno-play-card-game.png')
     .setTimestamp()
-    .setFooter(VERSION);
+    .setFooter(config.version);
 
 // Personal player card
 const profileCard = new Discord.MessageEmbed()
@@ -41,7 +40,7 @@ const profileCard = new Discord.MessageEmbed()
         'https://www.pinclipart.com/picdir/big/95-951998_worlds-smallest-uno-u-s-uno-play-card-game.png')
     .setThumbnail('https://www.pinclipart.com/picdir/big/95-951998_worlds-smallest-uno-u-s-uno-play-card-game.png')
     .setTimestamp()
-    .setFooter(VERSION);
+    .setFooter(config.version);
 
 const helpEmbed = new Discord.MessageEmbed()
     .setColor('#E74C3C')
@@ -77,7 +76,7 @@ const helpEmbed = new Discord.MessageEmbed()
     }, )
     .setThumbnail('https://www.pinclipart.com/picdir/big/95-951998_worlds-smallest-uno-u-s-uno-play-card-game.png')
     .setTimestamp()
-    .setFooter(VERSION);
+    .setFooter(config.version);
 
 bot.login(config.token);
 
@@ -112,7 +111,7 @@ bot.on("message", msg => {
         } else if (msg.content.includes("add")) { // Add player (UNO add 'username)
             msg.channel.send("Command not yet impemented.");
         } else if (msg.content.includes("profile")) { // Player profile (UNO profile 'username')
-            let player = msg.content.split(" ")[2];
+            let player = msg.content.split(" ")[2].toLowerCase();
             let rating = getRating(player);
             let WL = getWL(player);
             let allPlayers = getPlayers();

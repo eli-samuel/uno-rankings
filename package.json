@@ -1,6 +1,6 @@
 {
   "name": "uno-rankings",
-  "version": "1.2",
+  "version": "1.2.2",
   "description": "A bot for UNO rankings",
   "main": "index.js",
   "scripts": {
