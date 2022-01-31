@@ -1,1 +1,3 @@
-# Scrim Bot for Discrod
+# Scrim Bot for Discord
+
+Version 1.2
