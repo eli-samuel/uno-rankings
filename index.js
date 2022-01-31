@@ -38,7 +38,6 @@ const profileCard = new Discord.MessageEmbed()
     .setURL('https://www.discord.gg/7mbc8um')
     .setAuthor('UNO Rankings',
         'https://www.pinclipart.com/picdir/big/95-951998_worlds-smallest-uno-u-s-uno-play-card-game.png')
-    .setThumbnail('https://www.pinclipart.com/picdir/big/95-951998_worlds-smallest-uno-u-s-uno-play-card-game.png')
     .setTimestamp()
     .setFooter(config.version);
 
@@ -62,8 +61,8 @@ const helpEmbed = new Discord.MessageEmbed()
         value: 'show help commands',
         inline: false
     }, {
-        name: '~~**info**~~',
-        value: "~~about me~~ TO BE IMPLEMENTED",
+        name: '**info**',
+        value: "about me",
         inline: false
     }, {
         name: '**profile**',
@@ -77,6 +76,68 @@ const helpEmbed = new Discord.MessageEmbed()
     .setThumbnail('https://www.pinclipart.com/picdir/big/95-951998_worlds-smallest-uno-u-s-uno-play-card-game.png')
     .setTimestamp()
     .setFooter(config.version);
+
+const rankEmbed = new Discord.MessageEmbed()
+    .setColor('#E74C3C')
+    .setTitle('Information on the ranks')
+    .setURL('https://www.discord.gg/7mbc8um')
+    .setAuthor('UNO Rankings',
+        'https://www.pinclipart.com/picdir/big/95-951998_worlds-smallest-uno-u-s-uno-play-card-game.png')
+    .setDescription("Each UNO rank is split into 4 subranks of 50 elo each.")
+    .addFields({
+        name: '**UNO Gods**',
+        value: "Top 3 rated players regardless of rank",
+        image: {
+            url: "https://www.pinclipart.com/picdir/big/95-951998_worlds-smallest-uno-u-s-uno-play-card-game.png",
+        },
+        inline: false
+    }, {
+        name: '**Master**',
+        value: "800 - 1000 elo",
+        inline: false
+    }, {
+        name: '**Diamond**',
+        value: "600 - 800 elo",
+        inline: false
+    }, {
+        name: '**Platinum**',
+        value: "400 - 600 elo",
+        inline: false
+    }, {
+        name: '**Gold**',
+        value: "200 - 400 elo",
+        inline: false
+    }, {
+        name: '**Silver**',
+        value: "0 - 200 elo",
+        inline: false
+    }, )
+    .setThumbnail('https://www.pinclipart.com/picdir/big/95-951998_worlds-smallest-uno-u-s-uno-play-card-game.png')
+    .setTimestamp()
+    .setFooter(config.version);
+
+const ranks = [
+    [0, "Silver 1", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/b/bb/Badge_2_Silver.png/revision/latest?cb=20160903204714"],
+    [50, "Silver 2", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/b/bb/Badge_2_Silver.png/revision/latest?cb=20160903204714"],
+    [100, "Silver 3", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/b/bb/Badge_2_Silver.png/revision/latest?cb=20160903204714"],
+    [150, "Silver 4", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/b/bb/Badge_2_Silver.png/revision/latest?cb=20160903204714"],
+    [200, "Gold 1", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/b/b8/Badge_3_Gold.png/revision/latest/128?cb=20160903204719"],
+    [250, "Gold 2", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/b/b8/Badge_3_Gold.png/revision/latest/128?cb=20160903204719"],
+    [300, "Gold 3", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/b/b8/Badge_3_Gold.png/revision/latest/128?cb=20160903204719"],
+    [350, "Gold 4", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/b/b8/Badge_3_Gold.png/revision/latest/128?cb=20160903204719"],
+    [400, "Platinum 1", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/f/f8/Badge_4_Platinum.png/revision/latest/scale-to-width-down/128?cb=20160903204725"],
+    [450, "Platinum 2", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/f/f8/Badge_4_Platinum.png/revision/latest/scale-to-width-down/128?cb=20160903204725"],
+    [500, "Platinum 3", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/f/f8/Badge_4_Platinum.png/revision/latest/scale-to-width-down/128?cb=20160903204725"],
+    [550, "Platinum 4", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/f/f8/Badge_4_Platinum.png/revision/latest/scale-to-width-down/128?cb=20160903204725"],
+    [650, "Diamond 2", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/2/2f/Badge_5_Diamond.png/revision/latest/scale-to-width-down/128?cb=20160903204730"],
+    [600, "Diamond 1", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/2/2f/Badge_5_Diamond.png/revision/latest/scale-to-width-down/128?cb=20160903204730"],
+    [700, "Diamond 3", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/2/2f/Badge_5_Diamond.png/revision/latest/scale-to-width-down/128?cb=20160903204730"],
+    [750, "Diamond 4", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/2/2f/Badge_5_Diamond.png/revision/latest/scale-to-width-down/128?cb=20160903204730"],
+    [800, "Master 1", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/f/f0/Badge_6_Master.png/revision/latest/scale-to-width-down/128?cb=20160903204746"],
+    [850, "Master 2", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/f/f0/Badge_6_Master.png/revision/latest/scale-to-width-down/128?cb=20160903204746"],
+    [900, "Master 3", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/f/f0/Badge_6_Master.png/revision/latest/scale-to-width-down/128?cb=20160903204746"],
+    [950, "Master 4", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/f/f0/Badge_6_Master.png/revision/latest/scale-to-width-down/128?cb=20160903204746"]
+];
 
 bot.login(config.token);
 
@@ -115,19 +176,32 @@ bot.on("message", msg => {
             let rating = getRating(player);
             let WL = getWL(player);
             let allPlayers = getPlayers();
-            let rank = -1;
+            let place = -1;
             for (let i = 0; i < allPlayers.length; i++) {
                 if (allPlayers[i][0] == player) {
-                    rank = i + 1;
+                    place = i + 1;
                     break;
+                }
+            }
+            let rank = "";
+            if (place < 4) {
+                profileCard.setThumbnail("https://static.wikia.nocookie.net/overwatch_gamepedia/images/7/73/Badge_8_Top_500.png/revision/latest/scale-to-width-down/128?cb=20160903204736");
+            } else {
+                for (let i = 0; i < ranks.length; i++) {
+                    if (rating > ranks[i][0]) {
+                        rank = ranks[i][1];
+                        profileCard.setThumbnail(ranks[i][2]);
+                    }
                 }
             }
             profileCard.addFields({
                 name: "Username: " + player,
-                value: "Elo: *" + rating + "*\nW-L: *" + WL + "*\nRanking: *" + rank + " out of " + allPlayers.length + "*",
+                value: "Elo: *" + rating + "*\nW-L: *" + WL + "*\nRanking: *" + place + " out of " + allPlayers.length + "*",
                 inline: false
             });
+
             msg.channel.send(profileCard);
+            profileCard.setThumbnail('');
             profileCard.fields = [];
         } else if (msg.content.includes("game")) { // UNO game (UNO game 'winner username' 'loser username1' 'loser username2' 'loser username3')
             // eli 100,arabel 200,beks 300
@@ -199,6 +273,8 @@ bot.on("message", msg => {
             msg.channel.send(helpEmbed);
         } else if (msg.content.includes("info")) { // Information about the bot
             msg.channel.send("Command not yet impemented.");
+        } else if (msg.content.includes("ranks")) { // Information on ranks (UNO ranks)
+            msg.channel.send(rankEmbed);
         } else { // Any other command
             msg.channel.send("Unkown command.")
         }
