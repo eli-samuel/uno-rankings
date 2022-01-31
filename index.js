@@ -126,7 +126,7 @@ const ranks = [
     [300, "Gold 3", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/b/b8/Badge_3_Gold.png/revision/latest/128?cb=20160903204719"],
     [350, "Gold 4", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/b/b8/Badge_3_Gold.png/revision/latest/128?cb=20160903204719"],
     [400, "Platinum 1", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/f/f8/Badge_4_Platinum.png/revision/latest/scale-to-width-down/128?cb=20160903204725"],
-    [450, "Platinum 2", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/f/f8/Badge_4_Platinum.png/revision/latest/scale-to-width-down/128?cb=20160903204725"],
+    [450, "Platinum 2", "rank-icons/silver2.png"],
     [500, "Platinum 3", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/f/f8/Badge_4_Platinum.png/revision/latest/scale-to-width-down/128?cb=20160903204725"],
     [550, "Platinum 4", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/f/f8/Badge_4_Platinum.png/revision/latest/scale-to-width-down/128?cb=20160903204725"],
     [650, "Diamond 2", "https://static.wikia.nocookie.net/overwatch_gamepedia/images/2/2f/Badge_5_Diamond.png/revision/latest/scale-to-width-down/128?cb=20160903204730"],
